@@ -1,0 +1,47 @@
+from datetime import datetime
+from pygame import mixer
+import time
+
+def log(msg):                                   #creating a text file that keep record of everything
+    with open("mylog.txt","a") as f:
+        f.write(f"{msg}:{datetime.now()}\n")
+
+def alarm(file,stop):
+    mixer.init()                                #initialising mixer module to load file
+    mixer.music.load(file)                      #loading of music
+    mixer.music.play(3)                         #playing music in a loop of 3
+    while 1:
+        user_inp=input()                        #user input
+        if user_inp == stop:                    #user input to stop music
+            mixer.music.stop()                  #music will stop
+        break
+
+def eye_ex():
+    print("you have to do eye exercise\n")
+    alarm('alarm.mp3','ed')                       #attach your audio file & rename with .mp3
+    log("eye exercise done at")                   #keep record of your exercise 
+def full_ex():
+    print("you have to do body exercise")
+    alarm('alarm_alarm.mp3','bd')                 #attach your audio file & rename with .mp3
+    log("body exercise done at")                  #keep record of your exercise 
+def water():
+    print("you have to drink water regularly")
+    alarm('wake_up_call.mp3','d')                 #attach your audio file &rename with .mp3
+    log("A glass of water drank at")              #keep record of your exercise 
+
+
+if __name__ == "__main__":
+    time_left=(28800)                             #for 8 hour =28800 seconds
+    eyex=(5400)                                   #for 1.5 hour= 5400sec
+    fullex=(14400)                                #for 4 hr=14400sec
+    drinkw=(7200)                                 #for 2 hr=7200
+    while time_left > 0:
+        print(time_left, end=',')
+        time.sleep(1)
+        time_left -=1
+        if time_left ==eyex:
+            eye_ex()                              #calling function
+        if time_left == drinkw:
+            water()                               #calling function
+        if time_left == fullex:
+            full_ex()                             #calling function
