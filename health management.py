@@ -1,4 +1,4 @@
-                                            #TODO:HEALTH MANAGEMENT
+import os                                          #TODO:HEALTH MANAGEMENT
 import time
 def lock():
     ask1=int(input("type 1 for diet and 2 for exercise\nwhat do you want to lock(Diet or exercise):"))
@@ -95,7 +95,7 @@ def retrieve():
         print("you entered wrong input\nenter according to the given instruction")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     print("There are three client named(Rahul,Shyam,Anshu)")
     ask=int(input("do you want to lock or retrieve(type 1 for lock and 2 for retrieve):"))
     if ask==1:
